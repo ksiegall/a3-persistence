@@ -1,5 +1,4 @@
-// FRONT-END (CLIENT) JAVASCRIPT HERE
-//
+import {score} from "/js/snake.js"
 
 const add_rows_to_table = function (table, data) {
   var tmp_tbody = document.createElement("tbody");
@@ -62,8 +61,7 @@ const submit = async function (event) {
   // remains to this day
   event.preventDefault();
 
-  const name = document.getElementById("yourname").value,
-    score = document.getElementById("score").innerText;
+  const name = document.getElementById("yourname").value;
   (json = { name, score }), (body = JSON.stringify(json));
 
   console.log("sending " + body);
@@ -74,10 +72,10 @@ const submit = async function (event) {
   });
 
   const data = await response.json();
-
+  console.log(data);
   update_table(data);
   closeForm();
-  location.reload()
+  // location.reload()
 };
 
 const get_data = async function () {

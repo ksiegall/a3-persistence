@@ -10,7 +10,7 @@ let snakeX = 5, snakeY = 5;
 let velocityX = 0, velocityY = 0;
 let snakeBody = [];
 let setIntervalId;
-let score = 0;
+export let score = 0;
 
 
 const updateFoodPosition = () => {
