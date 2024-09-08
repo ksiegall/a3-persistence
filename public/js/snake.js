@@ -18,6 +18,7 @@ export const resetGame = () => {
     gameOver = false;
     snakeBody = [];
     score = 0;
+    scoreElement.innerText = `Score: ${score}`;
     updateFoodPosition()
     setIntervalId = setInterval(initGame, 100);
 }
@@ -64,7 +65,7 @@ const initGame = () => {
         updateFoodPosition();
         snakeBody.push([foodY, foodX]); // Pushing food position to snake body array
         score++; // increment score by 1
-        scoreElement.innerText = `Score: ${score}`;;
+        scoreElement.innerText = `Score: ${score}`;
     }
     // Updating the snake's head position based on the current velocity
     snakeX += velocityX;

@@ -9,9 +9,9 @@ const http = require("http"),
   port = 4001;
 
 const appdata = [
-  { name: "Lisa", score: 1000, rank: 1 },
-  { name: "John", score: 100, rank: 2 },
-  { name: "Jacob", score: 5, rank: 3 },
+  { name: "Kay", score: 132, rank: 1 },
+  { name: "Taylor", score: 42, rank: 2 },
+  { name: "test", score: 1, rank: 3 },
 ];
 
 const server = http.createServer(function (request, response) {
