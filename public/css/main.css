@@ -91,7 +91,7 @@ body {
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
-  background-color: #555;
+  background-color: #555555;
   color: white;
   padding: 16px 20px;
   border: none;
@@ -156,3 +156,9 @@ body {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 } 
+
+table {
+  text-align:center;
+  margin:auto;
+  margin-top:10px;
+}
