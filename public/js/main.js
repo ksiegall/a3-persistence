@@ -1,3 +1,5 @@
+import {initGame} from "/js/snake.js"
+
 const add_rows_to_table = function (table, data) {
   var tmp_tbody = document.createElement("tbody");
   let name = document.createElement("th");
@@ -78,7 +80,7 @@ const submit = async function (event) {
   console.log(data);
   update_table(data);
   closeForm();
-  location.reload()
+  initGame();
 };
 
 const get_data = async function () {
