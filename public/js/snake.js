@@ -20,7 +20,7 @@ export const resetGame = () => {
     score = 0;
     scoreElement.innerText = `Score: ${score}`;
     updateFoodPosition()
-    setIntervalId = setInterval(initGame, 100);
+    setIntervalId = setInterval(gameTick, 100);
 }
 
 const updateFoodPosition = () => {
@@ -30,10 +30,9 @@ const updateFoodPosition = () => {
 }
 
 const handleGameOver = () => {
-    // Clearing the timer and reloading the page on game over
+    // Clearing the timer and opening the score submission form
     clearInterval(setIntervalId);
     openForm();
-    // alert("Game Over! Press OK to replay...");
 }
 
 const changeDirection = e => {
@@ -56,7 +55,7 @@ const changeDirection = e => {
 // Calling changeDirection on each key click and passing key dataset value as an object
 controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 
-const initGame = () => {
+const gameTick = () => {
     if(gameOver) return handleGameOver();
     let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 
@@ -94,5 +93,5 @@ const initGame = () => {
 }
 
 updateFoodPosition();
-setIntervalId = setInterval(initGame, 100);
+setIntervalId = setInterval(gameTick, 100);
 document.addEventListener("keyup", changeDirection);

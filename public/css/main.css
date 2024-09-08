@@ -22,6 +22,11 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+table {
+  text-align:center;
+  margin:auto;
+  margin-top:10px;
+}
 .wrapper {
   width: 65vmin;
   height: 70vmin;
@@ -156,9 +161,3 @@ body {
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 } 
-
-table {
-  text-align:center;
-  margin:auto;
-  margin-top:10px;
-}

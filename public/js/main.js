@@ -65,6 +65,7 @@ const submit = async function (event) {
   // need to do a little processing to get the score to only be the number
   let score = document.getElementById("score").innerText;
   score = score.split(" ")[1];
+  // Log for debugging
   console.log("Name:", name, "Score", score)
   let json, body;
   (json = { name, score }), (body = JSON.stringify(json));
