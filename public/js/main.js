@@ -77,6 +77,7 @@ const submit = async function (event) {
 
   update_table(data);
   closeForm();
+  location.reload()
 };
 
 const get_data = async function () {
@@ -94,26 +95,10 @@ const get_data = async function () {
   console.log(data);
 };
 
-window.onload = function () {
-  get_data();
-  const submit_button = document.querySelector("#submit-button");
-  submit_button.onclick = submit;
-  document.getElementById("delete-button").onclick = delete_row;
-
-  const game_button = document.querySelector("#game-button");
-  const score = document.querySelector("#score");
-  game_button.onclick = function (event) {
-    event.preventDefault();
-    console.log("incrementing");
-    score.innerHTML = parseInt(score.innerHTML) + 1;
-    console.log("score value " + parseInt(score.innerHTML));
-  };
-};
-
-function openForm() {
-  document.getElementById("myForm").style.display = "block";
+export function openForm() {
+  document.getElementById("submitScore").style.display = "block";
 }
 
-function closeForm() {
-  document.getElementById("myForm").style.display = "none";
+export function closeForm() {
+  document.getElementById("submitScore").style.display = "none";
 } 
