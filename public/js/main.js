@@ -104,8 +104,8 @@ export function openForm() {
 }
 
 export function closeForm() {
-  document.getElementById("submitScore").style.display = "none";
   resetGame();
+  document.getElementById("submitScore").style.display = "none";
 } 
 
 window.onload = function () {
