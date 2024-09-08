@@ -1,5 +1,3 @@
-import {score} from "/js/snake.js"
-
 const add_rows_to_table = function (table, data) {
   var tmp_tbody = document.createElement("tbody");
   let name = document.createElement("th");
@@ -62,6 +60,10 @@ const submit = async function (event) {
   event.preventDefault();
 
   const name = document.getElementById("yourname").value;
+  // need to do a little processing to get the score to only be the number
+  let score = document.getElementById("score").innerText;
+  console.log("Name:", name, "Score", score)
+  score = score?.split(" ")[1];
   (json = { name, score }), (body = JSON.stringify(json));
 
   console.log("sending " + body);
@@ -100,3 +102,11 @@ export function openForm() {
 export function closeForm() {
   document.getElementById("submitScore").style.display = "none";
 } 
+
+window.onload = function () {
+  get_data();
+  const submit_button = document.querySelector("#submit-button");
+  submit_button.onclick = submit;
+  document.getElementById("delete-button").onclick = delete_row;
+
+};
