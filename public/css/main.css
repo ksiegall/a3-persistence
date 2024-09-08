@@ -19,6 +19,8 @@ body {
 }
 .griditem {
   text-align:center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .wrapper {
   width: 65vmin;

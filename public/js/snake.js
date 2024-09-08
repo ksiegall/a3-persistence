@@ -10,8 +10,17 @@ let snakeX = 5, snakeY = 5;
 let velocityX = 0, velocityY = 0;
 let snakeBody = [];
 let setIntervalId;
-export let score = 0;
+let score = 0;
 
+export const resetGame = () => {
+    snakeX = 5, snakeY = 5;
+    velocityX = 0, velocityY = 0;
+    gameOver = false;
+    snakeBody = [];
+    score = 0;
+    updateFoodPosition()
+    setIntervalId = setInterval(initGame, 100);
+}
 
 const updateFoodPosition = () => {
     // Passing a random 1 - 30 value as food position
@@ -24,7 +33,6 @@ const handleGameOver = () => {
     clearInterval(setIntervalId);
     openForm();
     // alert("Game Over! Press OK to replay...");
-    // location.reload();
 }
 
 const changeDirection = e => {
@@ -47,7 +55,7 @@ const changeDirection = e => {
 // Calling changeDirection on each key click and passing key dataset value as an object
 controls.forEach(button => button.addEventListener("click", () => changeDirection({ key: button.dataset.key })));
 
-export const initGame = () => {
+const initGame = () => {
     if(gameOver) return handleGameOver();
     let html = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 

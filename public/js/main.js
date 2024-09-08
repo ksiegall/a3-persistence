@@ -1,4 +1,4 @@
-import {initGame} from "/js/snake.js"
+import {resetGame} from "/js/snake.js"
 
 const add_rows_to_table = function (table, data) {
   var tmp_tbody = document.createElement("tbody");
@@ -66,7 +66,7 @@ const submit = async function (event) {
   let score = document.getElementById("score").innerText;
   score = score.split(" ")[1];
   console.log("Name:", name, "Score", score)
-  let json, body
+  let json, body;
   (json = { name, score }), (body = JSON.stringify(json));
 
   console.log("sending " + body);
@@ -80,7 +80,7 @@ const submit = async function (event) {
   console.log(data);
   update_table(data);
   closeForm();
-  initGame();
+  resetGame();
 };
 
 const get_data = async function () {
