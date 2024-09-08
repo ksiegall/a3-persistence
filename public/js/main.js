@@ -38,7 +38,7 @@ const update_table = function (data) {
 
 const delete_row = async function (event) {
   event.preventDefault();
-  const name = document.getElementById("yourname").value;
+  const name = document.getElementById("nameField").value;
   if (name == null) return;
   const json = { name };
   const body = JSON.stringify(json);
@@ -59,11 +59,12 @@ const submit = async function (event) {
   // remains to this day
   event.preventDefault();
 
-  const name = document.getElementById("yourname").value;
+  const name = document.getElementById("nameField").value;
   // need to do a little processing to get the score to only be the number
   let score = document.getElementById("score").innerText;
+  score = score.split(" ")[1];
   console.log("Name:", name, "Score", score)
-  score = score?.split(" ")[1];
+  let json, body
   (json = { name, score }), (body = JSON.stringify(json));
 
   console.log("sending " + body);
@@ -77,7 +78,7 @@ const submit = async function (event) {
   console.log(data);
   update_table(data);
   closeForm();
-  // location.reload()
+  location.reload()
 };
 
 const get_data = async function () {
