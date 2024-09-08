@@ -76,6 +76,7 @@ const submit = async function (event) {
   const data = await response.json();
 
   update_table(data);
+  closeForm();
 };
 
 const get_data = async function () {
@@ -108,3 +109,11 @@ window.onload = function () {
     console.log("score value " + parseInt(score.innerHTML));
   };
 };
+
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+} 
