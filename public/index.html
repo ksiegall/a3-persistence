@@ -15,7 +15,7 @@
       <form class="form-container">
         <input type="text" id="nameField" placeholder="Enter name">
         <button id = "submit-button" class="btn">Submit score</button>
-        <button id = "delete-button" class="btn">Delete score</button>
+<!--         <button id = "delete-button" class="btn">Delete score</button> -->
         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
       </form>
     </div>
@@ -50,9 +50,13 @@
           <br>
           Leaderboard:
         </h3>
+          <input type="text" id="removeField" placeholder="Enter name">
+          <button id="delete-button" class="btn">Delete score</button>
         <table id="score_table">
           <tbody id="score_tbody">
           </tbody>
+          <form class="form-container">
+          </form>
         </table>
       </div>
     </div>

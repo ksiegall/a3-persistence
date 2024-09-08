@@ -40,7 +40,7 @@ const update_table = function (data) {
 
 const delete_row = async function (event) {
   event.preventDefault();
-  const name = document.getElementById("nameField").value;
+  const name = document.getElementById("removeField").value;
   if (name == null) return;
   const json = { name };
   const body = JSON.stringify(json);
@@ -104,6 +104,7 @@ export function openForm() {
 
 export function closeForm() {
   document.getElementById("submitScore").style.display = "none";
+  resetGame();
 } 
 
 window.onload = function () {
