@@ -7,7 +7,7 @@ const add_rows_to_table = function (table, data) {
   let score = document.createElement("th");
   score.innerText = "Score";
   let rank = document.createElement("th");
-  rank.innerText = "Rank";
+  rank.innerText = "Date";
 
   let header_row = tmp_tbody.insertRow();
   header_row.appendChild(name);
@@ -22,7 +22,7 @@ const add_rows_to_table = function (table, data) {
     cell = row.insertCell();
     cell.innerText = data[i].score;
     cell = row.insertCell();
-    cell.innerText = data[i].rank;
+    cell.innerText = data[i].date;
   }
   var tbody = document.getElementById("score_tbody");
   tbody.innerHTML = tmp_tbody.innerHTML;

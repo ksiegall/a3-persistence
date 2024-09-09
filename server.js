@@ -9,9 +9,9 @@ const http = require("http"),
   port = 4001;
 
 const appdata = [
-  { name: "Kay", score: 132, date: Date("July 6, 2023 1:23:45 AM").getDate() },
-  { name: "Taylor", score: 42, rank: 2, date: Date("September 8, 2024 2:30:00 PM") },
-  { name: "test", score: 1, rank: 3, date: Date().getDate()},
+  { name: "Kay", score: 132, date: (new Date("July 6, 2023 1:23:45 AM")).toDateString() },
+  { name: "Taylor", score: 42, date: (new Date("September 8, 2024 2:30:00 PM")).toDateString() },
+  { name: "test", score: 1, date: (new Date()).toDateString()},
 ];
 
 const server = http.createServer(function (request, response) {
@@ -65,7 +65,7 @@ const handlePost = function (request, response) {
       }
       if (!updated) {
         console.log("name " + data.name);
-        appdata.push({ name: data.name, score: data.score, date: Date().getDate() });
+        appdata.push({ name: data.name, score: data.score, date: (new Date()).toDateString() });
       }
 
       sortAndSend(request, response);
