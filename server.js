@@ -9,9 +9,9 @@ const http = require("http"),
   port = 4001;
 
 const appdata = [
-  { name: "Kay", score: 132, rank: 1 },
-  { name: "Taylor", score: 42, rank: 2 },
-  { name: "test", score: 1, rank: 3 },
+  { name: "Kay", score: 132, date: Date("July 6, 2023 1:23:45 AM").getDate() },
+  { name: "Taylor", score: 42, rank: 2, date: Date("September 8, 2024 2:30:00 PM") },
+  { name: "test", score: 1, rank: 3, date: Date().getDate()},
 ];
 
 const server = http.createServer(function (request, response) {
@@ -41,10 +41,6 @@ const sortAndSend = function (request, response) {
     return b.score - a.score;
   });
 
-  for (var i = 0; i < appdata.length; i++) {
-    appdata[i].rank = i + 1;
-  }
-
   response.writeHead(200, "OK", { "Content-Type": "text/plain" });
   response.end(JSON.stringify(appdata));
 };
@@ -69,7 +65,7 @@ const handlePost = function (request, response) {
       }
       if (!updated) {
         console.log("name " + data.name);
-        appdata.push({ name: data.name, score: data.score, rank: 0 });
+        appdata.push({ name: data.name, score: data.score, date: Date().getDate() });
       }
 
       sortAndSend(request, response);
