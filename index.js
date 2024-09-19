@@ -23,7 +23,7 @@ app.get("/js/snake.js", (req, res) => {
   res.sendFile("/js/snake.js", sendFileOptions);
 })
 
-app.post("/submit", function() {
+app.post("/submit", (req, res) => {
   console.log(JSON.parse(dataString));
   const data = JSON.parse(dataString);
   let updated = false;
@@ -34,6 +34,7 @@ app.post("/submit", function() {
     }
   }
 });
+
 // const handlePost = function (request, response) {
 //   let dataString = "";
 
