@@ -8,6 +8,7 @@ dependencies:
   mime: 2.6.0
   mongodb: 6.9.0
   mongoose: 8.6.3
+  nes.css: 1.0.0
   passport: 0.7.0
   passport-github: 1.1.0
   passport-github2: 0.1.12
@@ -849,6 +850,10 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==
+  /nes.css/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-AdQ1pJvq98VqGR2JlfgTWK8jdGo9HUAi9tWn3R+4eMi02SH98fUdGkScBux5ua4JYjitOG77j9V6mMCSMHAUxA==
   /node-addon-api/5.1.0:
     dev: false
     resolution:
@@ -1383,6 +1388,7 @@ specifiers:
   mime: ^2.4.4
   mongodb: ^6.8.1
   mongoose: ^8.6.1
+  nes.css: ^1.0.0
   nodemon: ^3.1.4
   passport: ^0.7.0
   passport-github: ^1.1.0
