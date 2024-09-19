@@ -68,7 +68,7 @@ const submit = async function (event) {
   // Log for debugging
   console.log("Name:", name, "Score", score)
   let json, body;
-  (json = { name, score }), (body = JSON.stringify(json));
+  (json = { name:name, score:score }), (body = JSON.stringify(json));
 
   console.log("sending " + body);
 

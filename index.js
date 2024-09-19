@@ -33,7 +33,7 @@ app.get("/js/snake.js", (req, res) => {
   res.sendFile("/js/snake.js", sendFileOptions);
 })
 app.get('/data', (req, res) => {
-  res.send(JSON.parse(appdata));
+  res.send(JSON.stringify(appdata));
 })
 
 app.post("/submit", (req, res) => {
