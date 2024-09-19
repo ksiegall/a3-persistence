@@ -11,13 +11,13 @@ const appdata = [
 const sendFileOptions = {root:"public/"}
 
 // Sort and then send the current table
-const sortAndSend = function (request, response) {
+const sortAndSend = function (req, res) {
   appdata.sort(function (a, b) {
     return b.score - a.score;
   });
 
-  response.writeHead(200, "OK", { "Content-Type": "text/plain" });
-  response.end(JSON.stringify(appdata));
+  res.writeHead(200, "OK", { "Content-Type": "text/plain" });
+  res.end(JSON.stringify(appdata));
 };
 
 app.get('/', (req, res) => {
@@ -58,7 +58,7 @@ app.post("/delete", (req, res) => {
     console.log("Deleting.");
     appdata.splice(idx, 1);
   }
-  sortAndSend(request, response);
+  sortAndSend(req, res);
 });
 
 // const handlePost = function (request, response) {
