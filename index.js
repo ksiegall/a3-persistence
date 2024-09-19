@@ -9,7 +9,7 @@ const appdata = [
 ];
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.sendFile("/public/index.html")
 //   sendFile(response, "public/index.html");
 })
 
