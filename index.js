@@ -10,6 +10,16 @@ const appdata = [
 
 const sendFileOptions = {root:"public/"}
 
+// Sort and then send the current table
+const sortAndSend = function (request, response) {
+  appdata.sort(function (a, b) {
+    return b.score - a.score;
+  });
+
+  response.writeHead(200, "OK", { "Content-Type": "text/plain" });
+  response.end(JSON.stringify(appdata));
+};
+
 app.get('/', (req, res) => {
   res.sendFile("index.html", sendFileOptions);
 })
@@ -24,8 +34,8 @@ app.get("/js/snake.js", (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
-  console.log(JSON.parse(dataString));
-  const data = JSON.parse(dataString);
+  console.log(req.body);
+  const data = req.body;
   let updated = false;
   for (var i = 0; i < appdata.length; i++) {
     if (data.name === appdata[i].name) {
@@ -33,6 +43,22 @@ app.post("/submit", (req, res) => {
       updated = true;
     }
   }
+});
+
+app.post("/delete", (req, res) => {
+  const data = req.body;
+  console.log("Received delete request for " + req.body);
+  let idx = undefined;
+  for (let i = 0; i < appdata.length; i++) {
+    if (appdata[i].name === data.name) {
+      idx = i;
+    }
+  }
+  if (idx != undefined) {
+    console.log("Deleting.");
+    appdata.splice(idx, 1);
+  }
+  sortAndSend(request, response);
 });
 
 // const handlePost = function (request, response) {
