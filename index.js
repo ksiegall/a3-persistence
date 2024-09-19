@@ -32,6 +32,9 @@ app.get("/js/main.js", (req, res) => {
 app.get("/js/snake.js", (req, res) => {
   res.sendFile("/js/snake.js", sendFileOptions);
 })
+app.get('/data', (req, res) => {
+  res.send(JSON.parse(appdata));
+})
 
 app.post("/submit", (req, res) => {
   console.log(req.body);
