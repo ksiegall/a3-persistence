@@ -37,7 +37,7 @@ app.get('/data', (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
-  console.log(req.body);
+  console.log(req);
   const data = req.body;
   let updated = false;
   for (var i = 0; i < appdata.length; i++) {
