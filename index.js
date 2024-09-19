@@ -8,9 +8,10 @@ const appdata = [
   { name: "test", score: 1, date: (new Date()).toDateString()},
 ];
 
+const sendFileOptions = {root:"."}
+
 app.get('/', (req, res) => {
-  res.sendFile("/public/index.html")
-//   sendFile(response, "public/index.html");
+  res.sendFile("index.html", sendFileOptions);
 })
 
 app.get('/data', (req, res) => {
