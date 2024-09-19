@@ -51,6 +51,11 @@ app.post("/submit", (req, res) => {
       updated = true;
     }
   }
+  if (!updated) {
+    console.log("name " + data.name);
+    appdata.push({ name: data.name, score: data.score, date: (new Date()).toDateString() });
+  }
+  sortAndSend(req, res);
 });
 
 app.post("/delete", (req, res) => {
