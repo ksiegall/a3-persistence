@@ -27,6 +27,7 @@
   },
   "devDependencies": {
     "dotenv": "^16.4.5",
-    "nodemon": "^3.1.4"
+    "nodemon": "^3.1.4",
+    "nes.css": "^1.0.0"
   }
 }

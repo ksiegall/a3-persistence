@@ -15,9 +15,9 @@
     <div class="form-popup" id="submitScore">
       <form class="form-container">
         <input type="text" id="nameField" placeholder="Enter name">
-        <button id = "submit-button" class="success">Submit score</button>
+        <button type="button"  id="submit-button" class="nes-btn is-success">Submit score</button>
 <!--         <button id = "delete-button" class="btn">Delete score</button> -->
-        <button type="button" class="error" onclick="closeForm()">Close</button>
+        <button type="button" class="nes-btn is-error" onclick="closeForm()">Close</button>
       </form>
     </div>
     <div class="grid">
@@ -52,7 +52,7 @@
           Leaderboard:
         </h3>
           <input type="text" id="removeField" placeholder="Enter name">
-          <button id="delete-button" class="btn">Delete score</button>
+          <button id="delete-button" type="button" class="nes-btn is-warning">Delete score</button>
         <table id="score_table">
           <tbody id="score_tbody">
           </tbody>
