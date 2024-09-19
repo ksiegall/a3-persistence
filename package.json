@@ -4,7 +4,8 @@
   "description": "",
   "author": "K Siegall",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
