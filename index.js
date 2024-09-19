@@ -21,7 +21,6 @@ const sortAndSend = function (req, res) {
   appdata.sort(function (a, b) {
     return b.score - a.score;
   });
-
   res.writeHead(200, "OK", { "Content-Type": "text/plain" });
   res.end(JSON.stringify(appdata));
 };
