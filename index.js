@@ -64,12 +64,10 @@ app.post("/delete", (req, res) => {
   let idx = undefined;
   for (let i = 0; i < appdata.length; i++) {
     if (appdata[i].name === data.name) {
-      idx = i;
+      console.log("Deleting.");
+      appdata.splice(i, 1);
+      break;
     }
-  }
-  if (idx != undefined) {
-    console.log("Deleting.");
-    appdata.splice(idx, 1);
   }
   sortAndSend(req, res);
 });

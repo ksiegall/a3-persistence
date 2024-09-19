@@ -47,7 +47,12 @@ const delete_row = async function (event) {
 
   console.log("requesting delete for " + body);
 
-  const response = await fetch("/delete", { method: "POST", body });
+  const response = await fetch("/delete", { 
+    method: "POST", 
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body });
 
   const data = await response.json();
 
