@@ -1,6 +1,12 @@
 var express = require('express')
+var bodyParser = require('body-parser')
 var app = express()
 const port = 3000
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// parse application/json
+app.use(bodyParser.json({extended:true}))
 
 const appdata = [
   { name: "Kay", score: 132, date: (new Date("July 6, 2023 1:23:45 AM")).toDateString() },
@@ -37,7 +43,7 @@ app.get('/data', (req, res) => {
 })
 
 app.post("/submit", (req, res) => {
-  console.log(req);
+  console.log(req.body);
   const data = req.body;
   let updated = false;
   for (var i = 0; i < appdata.length; i++) {
