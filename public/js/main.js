@@ -121,7 +121,7 @@ window.onload = function () {
   const submit_button = document.querySelector("#submit-button");
   submit_button.onclick = submit;
   
-  document.getElementById("cancel-button").onclick = closeForm;
+  document.getElementById("close-button").onclick = closeForm;
   document.getElementById("delete-button").onclick = delete_row;
 
 };
