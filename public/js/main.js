@@ -120,6 +120,9 @@ window.onload = function () {
   get_data();
   const submit_button = document.querySelector("#submit-button");
   submit_button.onclick = submit;
+  
+  const cancel_button = document.getElementById("cancel-button");
+  cancel_button.onclick = closeForm;
   document.getElementById("delete-button").onclick = delete_row;
 
 };
