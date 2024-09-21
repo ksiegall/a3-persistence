@@ -111,7 +111,7 @@ export function openForm() {
   document.getElementById("submitScore").style.display = "block";
 }
 
-export function closeForm() {
+export async function closeForm() {
   resetGame();
   document.getElementById("submitScore").style.display = "none";
 } 
@@ -121,8 +121,7 @@ window.onload = function () {
   const submit_button = document.querySelector("#submit-button");
   submit_button.onclick = submit;
   
-  const cancel_button = document.getElementById("cancel-button");
-  cancel_button.onclick = closeForm;
+  document.getElementById("cancel-button").onclick = closeForm;
   document.getElementById("delete-button").onclick = delete_row;
 
 };
