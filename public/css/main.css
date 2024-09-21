@@ -6,7 +6,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Press Start 2P', sans-serif;
+/*   font-family: 'Open Sans', sans-serif; */
 }
 body {
   display: flex;
@@ -70,8 +70,6 @@ table {
   padding: 25px 0;
   text-align: center;
   font-size: 1.3rem;
-  
-  font-family: 'Open Sans', sans-serif;
   color: #B8C6DC;
   width: calc(100% / 4);
   cursor: pointer;
