@@ -8,6 +8,14 @@ const http = require("http"),
   dir = "public/",
   port = 4001;
 
+const envVariables = process.env;
+const {
+  mongodb_url
+} = envVariables;
+const client = new MongoClient(mongodb_url);
+
+const {MongoClient} = require('mongodb');
+
 const appdata = [
   { name: "Kay", score: 132, date: (new Date("July 6, 2023 1:23:45 AM")).toDateString() },
   { name: "Taylor", score: 42, date: (new Date("September 8, 2024 2:30:00 PM")).toDateString() },
@@ -105,3 +113,19 @@ const sendFile = function (response, filename) {
 };
 
 server.listen(process.env.PORT || port);
+
+async function main(){
+  try {
+    await client.connect();
+
+    await listDatabases(client);
+ 
+  } catch (e) {
+      console.error(e);
+  } finally {
+    await client.close();
+  }
+
+}
+
+main().catch(console.error);
