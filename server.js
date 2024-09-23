@@ -121,6 +121,7 @@ async function listDatabases(client){
 async function main(){
   try {
     await client.connect();
+    console.log("Connected");
 
     await listDatabases(client);
  
@@ -128,6 +129,7 @@ async function main(){
       console.error(e);
   } finally {
     await client.close();
+    console.log("Disconnected");
   }
 
 }
