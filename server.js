@@ -119,8 +119,6 @@ async function listDatabases(client){
 };
  
 async function main(){
-  console.log("Connecting to MongoDB...");
-  const client = new MongoClient(mongodb_url);
   try {
     await client.connect();
 
@@ -135,4 +133,6 @@ async function main(){
 }
 
 server.listen(process.env.PORT || port);
+console.log("Connecting to MongoDB...");
+const client = new MongoClient(mongodb_url);
 main().catch(console.error);
