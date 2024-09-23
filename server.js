@@ -12,7 +12,6 @@ const envVariables = process.env;
 const {
   mongodb_url
 } = envVariables;
-const client = new MongoClient(mongodb_url);
 
 const {MongoClient} = require('mongodb');
 
@@ -112,9 +111,15 @@ const sendFile = function (response, filename) {
   });
 };
 
-server.listen(process.env.PORT || port);
-
+async function listDatabases(client){
+    const databasesList = await client.db().admin().listDatabases();
+ 
+    console.log("Databases:");
+    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+};
+ 
 async function main(){
+  const client = new MongoClient(mongodb_url);
   try {
     await client.connect();
 
@@ -128,4 +133,5 @@ async function main(){
 
 }
 
+server.listen(process.env.PORT || port);
 main().catch(console.error);
