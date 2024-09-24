@@ -90,6 +90,7 @@ async function connectToDB(){
     console.log("Connected");
 
     collection = client.db("a3-krsiegall").collection("users");
+    
  
   } catch (e) {
       console.error(e);
