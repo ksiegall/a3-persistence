@@ -8,13 +8,6 @@ const http = require("http"),
   dir = "public/",
   port = 4001;
 
-const envVariables = process.env;
-const {
-  mongodb_url
-} = envVariables;
-
-const {MongoClient} = require('mongodb');
-
 const appdata = [
   { name: "Kay", score: 132, date: (new Date("July 6, 2023 1:23:45 AM")).toDateString() },
   { name: "Taylor", score: 42, date: (new Date("September 8, 2024 2:30:00 PM")).toDateString() },
@@ -111,30 +104,4 @@ const sendFile = function (response, filename) {
   });
 };
 
-async function listDatabases(client){
-    const databasesList = await client.db().admin().listDatabases();
- 
-    console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-};
- 
-async function main(){
-  try {
-    await client.connect();
-    console.log("Connected");
-
-    await listDatabases(client);
- 
-  } catch (e) {
-      console.error(e);
-  } finally {
-    await client.close();
-    console.log("Disconnected");
-  }
-
-}
-
 server.listen(process.env.PORT || port);
-console.log("Connecting to MongoDB...");
-const client = new MongoClient(mongodb_url);
-main().catch(console.error);
