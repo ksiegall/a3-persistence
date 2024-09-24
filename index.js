@@ -80,25 +80,21 @@ app.post("/delete", (req, res) => {
 
 
 let collection = null
-async function main(){
+async function connectToDB(){
   try {
     await client.connect();
     console.log("Connected");
 
-    collection = client..db("a3-krsiegall").collection("toDoData");
+    collection = client.db("a3-krsiegall").collection("users");
  
   } catch (e) {
       console.error(e);
-  } finally {
-    await client.close();
-    console.log("Disconnected");
   }
-
 }
 console.log("Connecting to MongoDB...");
 const client = new MongoClient(mongodb_url);
 const dbClient = client.db()
-main().catch(console.error);
+connectToDB().catch(console.error);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
