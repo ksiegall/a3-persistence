@@ -1,10 +1,10 @@
 var express = require('express')
 var bodyParser = require('body-parser')
-
+require('dotenv').config();
 const envVariables = process.env;
-const {
-  mongodb_url
-} = envVariables;
+const 
+  mongodb_url = envVariables.mongodb_url;
+console.log("Mongo DB URL:", mongodb_url);
 const {MongoClient} = require('mongodb');
 
 var app = express()
