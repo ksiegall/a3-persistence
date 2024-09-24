@@ -4,7 +4,6 @@ require('dotenv').config();
 const envVariables = process.env;
 const 
   mongodb_url = envVariables.mongodb_url;
-console.log("Mongo DB URL:", mongodb_url);
 const {MongoClient} = require('mongodb');
 
 var app = express()
@@ -79,79 +78,24 @@ app.post("/delete", (req, res) => {
   sortAndSend(req, res);
 });
 
-// const handlePost = function (request, response) {
-//   let dataString = "";
-
-//   request.on("data", function (data) {
-//     dataString += data;
-//   });
-
-//   request.on("end", function () {
-//     if (request.url === "/submit") {
-//       console.log(JSON.parse(dataString));
-//       const data = JSON.parse(dataString);
-//       let updated = false;
-//       for (var i = 0; i < appdata.length; i++) {
-//         if (data.name === appdata[i].name) {
-//           appdata[i].score = data.score;
-//           updated = true;
-//         }
-//       }
-//       if (!updated) {
-//         console.log("name " + data.name);
-//         appdata.push({ name: data.name, score: data.score, date: (new Date()).toDateString() });
-//       }
-
-//       sortAndSend(request, response);
-//     } else if (request.url === "/delete") {
-//       const data = JSON.parse(dataString);
-//       console.log("Received delete request for " + dataString);
-//       let idx = undefined;
-//       for (let i = 0; i < appdata.length; i++) {
-//         if (appdata[i].name === data.name) {
-//           idx = i;
-//         }
-//       }
-//       if (idx != undefined) {
-//         console.log("Deleting.");
-//         appdata.splice(idx, 1);
-//       }
-//       sortAndSend(request, response);
-//     }
-//   });
-// };
-
 async function listDatabases(client){
     const databasesList = await client.db().admin().listDatabases();
  
     console.log("Databases:");
     databasesList.databases.forEach(db => console.log(` - ${db.name}`));
+    databasesList.databases.get("a3-krsiegall")
 };
  
-async function main(){
-  try {
-    await client.connect();
-    console.log("Connected");
-
-    await listDatabases(client);
- 
-  } catch (e) {
-      console.error(e);
-  } finally {
-    await client.close();
-    console.log("Disconnected");
-  }
-
-}
-console.log("Connecting to MongoDB...", mongodb_url);
+console.log("Connecting to MongoDB...");
 const client = new MongoClient(mongodb_url);
-main().catch(console.error);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
 
 app.use((req, res, next) => {
+  client.connect();
   console.log(`${req.method} ${req.url}`);
   next(); // Pass control to the next middleware or route handler
+  client.close();
 });
