@@ -54,11 +54,15 @@ app.post("/submit", (req, res) => {
   for (var i = 0; i < appdata.length; i++) {
     if (data.name === appdata[i].name) {
       appdata[i].score = data.score;
+      collection.updateOne({ name: data.name, score: data.score, date: (new Date()).toDateString() })
       updated = true;
     }
   }
   if (!updated) {
     console.log("name " + data.name);
+    if(collection != null){
+      collection.insertOne({ name: data.name, score: data.score, date: (new Date()).toDateString() })
+    }
     appdata.push({ name: data.name, score: data.score, date: (new Date()).toDateString() });
   }
   sortAndSend(req, res);
