@@ -78,19 +78,14 @@ app.post("/delete", (req, res) => {
   sortAndSend(req, res);
 });
 
-async function listDatabases(client){
-    const databasesList = await client.db().runCommand({ hello: 1 });
- 
-    console.log("Databases:");
-    databasesList.collections.forEach(db => console.log(` - ${db.name}`));
-};
- 
+
+let collection = null
 async function main(){
   try {
     await client.connect();
     console.log("Connected");
 
-    await listDatabases(client);
+    collection = client..db("a3-krsiegall").collection("toDoData");
  
   } catch (e) {
       console.error(e);
@@ -102,6 +97,7 @@ async function main(){
 }
 console.log("Connecting to MongoDB...");
 const client = new MongoClient(mongodb_url);
+const dbClient = client.db()
 main().catch(console.error);
 
 app.listen(port, () => {
