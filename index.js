@@ -79,23 +79,36 @@ app.post("/delete", (req, res) => {
 });
 
 async function listDatabases(client){
-    const databasesList = await client.db().admin().listDatabases();
+    const databasesList = await client.db().runCommand({ hello: 1 });
  
     console.log("Databases:");
-    databasesList.databases.forEach(db => console.log(` - ${db.name}`));
-    databasesList.databases.get("a3-krsiegall")
+    databasesList.collections.forEach(db => console.log(` - ${db.name}`));
 };
  
+async function main(){
+  try {
+    await client.connect();
+    console.log("Connected");
+
+    await listDatabases(client);
+ 
+  } catch (e) {
+      console.error(e);
+  } finally {
+    await client.close();
+    console.log("Disconnected");
+  }
+
+}
 console.log("Connecting to MongoDB...");
 const client = new MongoClient(mongodb_url);
+main().catch(console.error);
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 });
 
 app.use((req, res, next) => {
-  client.connect();
   console.log(`${req.method} ${req.url}`);
   next(); // Pass control to the next middleware or route handler
-  client.close();
 });
