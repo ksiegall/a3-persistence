@@ -143,7 +143,7 @@ async function main(){
   }
 
 }
-console.log("Connecting to MongoDB...");
+console.log("Connecting to MongoDB...", mongodb_url);
 const client = new MongoClient(mongodb_url);
 main().catch(console.error);
 
